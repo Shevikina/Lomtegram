@@ -44,34 +44,39 @@ fun GalleryScreen(navController: NavController, source: List<ImageCard>) {
     Column(
         modifier = Modifier.fillMaxSize()
     ) {
-        Row(
-            verticalAlignment = Alignment.CenterVertically,
-            horizontalArrangement = Arrangement.Center,
+        Box(
             modifier = Modifier
                 .fillMaxWidth()
                 .height(40.dp)
-                .background(color = Color(0xFF3E493B))
+                .background(color = Color(0xFF3E493B)),
+            contentAlignment = Alignment.Center
         ) {
-            Image(
-                painter = painterResource(id = R.drawable.ic_lomtik),
-                contentDescription = "app icon",
-                modifier = Modifier
-                    .clip(CircleShape)
-                    .clickable {
-                        Toast
-                            .makeText(galleryContext, "Mrrrrrr", Toast.LENGTH_SHORT)
-                            .show()
-                    }
-            )
             Icon(
                 imageVector = ImageVector.vectorResource(id = R.drawable.ic_lomtegram_label),
                 contentDescription = "app label",
                 tint = MaterialTheme.colorScheme.background,
-                modifier = Modifier
-                    .height(20.dp)
-                    .weight(0.5f)
+                modifier = Modifier.height(20.dp)
             )
-            Spacer(modifier = Modifier.weight(0.1f))
+            Row(
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.Center,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(40.dp)
+            ) {
+                Image(
+                    painter = painterResource(id = R.drawable.ic_lomtik),
+                    contentDescription = "app icon",
+                    modifier = Modifier
+                        .clip(CircleShape)
+                        .clickable {
+                            Toast
+                                .makeText(galleryContext, "Mrrrrrr", Toast.LENGTH_SHORT)
+                                .show()
+                        }
+                )
+                Spacer(modifier = Modifier.weight(1f))
+            }
         }
         HorizontalDivider()
         Spacer(modifier = Modifier.height(2.dp))
