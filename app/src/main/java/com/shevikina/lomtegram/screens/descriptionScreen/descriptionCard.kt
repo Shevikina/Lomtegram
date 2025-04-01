@@ -10,11 +10,11 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.shevikina.lomtegram.ui.theme.LomtegramTheme
 import com.shevikina.lomtegram.utils.advancedShadow
 
 @Composable
@@ -23,14 +23,17 @@ fun DescriptionCard(text: String, modifier: Modifier = Modifier) {
         contentAlignment = Alignment.Center,
         modifier = modifier
             .advancedShadow(
-                color = Color.Black,
+                color = MaterialTheme.colorScheme.onBackground,
                 alpha = 0.15f,
                 offsetY = 4.dp,
                 shadowBlurRadius = 4.dp,
                 cornersRadius = 32.dp
             )
-            .background(Color.White, RoundedCornerShape(0.dp, 0.dp, 32.dp, 32.dp))
-            .padding(vertical = 30.dp)
+            .background(
+                MaterialTheme.colorScheme.background,
+                RoundedCornerShape(0.dp, 0.dp, 32.dp, 32.dp)
+            )
+            .padding(vertical = 30.dp, horizontal = 10.dp)
     ) {
         Text(
             text = if (text.isEmpty()) "Это смешнявый Ломтик" else text,
@@ -43,14 +46,16 @@ fun DescriptionCard(text: String, modifier: Modifier = Modifier) {
 @Preview(showBackground = true, backgroundColor = 0xFFFFFFFF)
 @Composable
 fun DescriptionCardPreview() {
-    Box(
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(32.dp)
-    ) {
-        DescriptionCard(
-            text = "Тут Ломтик такой смешной, но милый, прям гроза района",
-            modifier = Modifier.fillMaxWidth()
-        )
+    LomtegramTheme {
+        Box(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(20.dp)
+        ) {
+            DescriptionCard(
+                text = "Тут Ломтик такой смешной, но милый, прям гроза района",
+                modifier = Modifier.fillMaxWidth()
+            )
+        }
     }
 }
