@@ -1,6 +1,8 @@
 package com.shevikina.lomtegram.screens
 
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.MutableState
+import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -9,7 +11,11 @@ import androidx.navigation.toRoute
 import com.shevikina.lomtegram.screens.descriptionScreen.DescriptionScreen
 import kotlinx.serialization.Serializable
 
-data class ImageCard(val path: String, val description: String, var boopCount:Int = 0)
+data class ImageCard(
+    val path: String,
+    val description: String,
+    var boopCount: MutableState<Int> = mutableIntStateOf(0)
+)
 
 @Serializable
 sealed class NavScreen {
@@ -22,9 +28,12 @@ sealed class NavScreen {
 
 @Composable
 fun NavigationScreen() {
-    var imageCardList = listOf(
+    val imageCardList = listOf(
         ImageCard("file:///android_asset/2.jpg", "Привет! Познакомимся? Я Ломтик"),
-        ImageCard("file:///android_asset/1.jpg", "Тут Ломтик такой смешной, но милый, прям гроза района"),
+        ImageCard(
+            "file:///android_asset/1.jpg",
+            "Тут Ломтик такой смешной, но милый, прям гроза района"
+        ),
         ImageCard("file:///android_asset/3.jpg", "Счастливый батонер Ломтик"),
         ImageCard("file:///android_asset/4.jpg", "Ломтик рысь"),
         ImageCard("file:///android_asset/5.jpg", "Ломтик кролик"),
