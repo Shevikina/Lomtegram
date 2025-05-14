@@ -41,5 +41,5 @@
 ## Как потыкать?
 
 Есть 2 варианта попробовать приложение:
-  1. Clone репозеторий и собрать с помощью Android Studio
+  1. Clone репозиторий и собрать с помощью Android Studio
   2. Install from RuStore: [Lomtegram](https://www.rustore.ru/catalog/app/com.shevikina.lomtegram)
